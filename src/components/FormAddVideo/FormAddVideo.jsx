@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { v4 as uuid } from "uuid";
 import { Button } from "@/components/ui/button";
 import InputForm from "../InputForm/InputForm";
 import SelectForm from "../InputForm/SelectForm";
@@ -8,21 +9,25 @@ import { addVideo } from "@/lib/fetch";
 
 export default function FormAddVideo() {
   const [formData, setFormData] = useState({});
+  const [success, setSuccess] = useState(false);
 
   function submitVideo(e) {
     e.preventDefault();
+    setFormData({ ...formData, id: uuid() });
     console.log("submitting video", formData);
     addVideo(formData);
-    // const form = e.target;
-    // const formulario = new FormData(form);
-    // const data = Object.fromEntries(formData.entries());
-    // console.log("data", data);
+    cleanForm();
+    setSuccess(true);
   }
 
   function cleanForm() {
     console.log("cleaning form");
     setFormData({});
   }
+  const handleCategoryChange = (event) => {
+    setFormData({ ...formData, category: event });
+    console.log("Categoría seleccionada:", event);
+  };
 
   return (
     <div className='container mx-auto my-6 flex flex-col justify-center items-center gap-6'>
@@ -39,6 +44,7 @@ export default function FormAddVideo() {
             type='text'
             required={true}
             placeholder='Ingrese el título del video'
+            value={formData.title || ""}
             onChange={(e) =>
               setFormData({ ...formData, title: e.target.value })
             }
@@ -47,15 +53,14 @@ export default function FormAddVideo() {
             label='Categoria'
             required={true}
             placeholder='Seleccione una categoría'
-            onChange={(e) =>
-              setFormData({ ...formData, category: e.target.value })
-            }
+            onValueChange={handleCategoryChange}
           />
           <InputForm
             label='Imagen'
             type='text'
             required={true}
             placeholder='Ingrese URL de la imagen'
+            value={formData.url_img || ""}
             onChange={(e) =>
               setFormData({ ...formData, url_img: e.target.value })
             }
@@ -65,6 +70,7 @@ export default function FormAddVideo() {
             type='text'
             required={true}
             placeholder='Ingrese URL del video'
+            value={formData.url_video || ""}
             onChange={(e) =>
               setFormData({ ...formData, url_video: e.target.value })
             }
@@ -73,6 +79,7 @@ export default function FormAddVideo() {
             label='Descripción'
             required={true}
             placeholder='Descripción del video'
+            value={formData.description || ""}
             onChange={(e) =>
               setFormData({ ...formData, description: e.target.value })
             }
@@ -88,6 +95,11 @@ export default function FormAddVideo() {
           </Button>
         </div>
       </form>
+      {success && (
+        <div className='bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative'>
+          Video guardado con éxito
+        </div>
+      )}
     </div>
   );
 }

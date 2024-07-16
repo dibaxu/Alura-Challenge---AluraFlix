@@ -10,13 +10,11 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import FormEdit from "../FormEditVideo/FormEdit";
-import { set } from "react-hook-form";
 
 export default function VideoCard(props) {
   const video = props.video;
   const { title, description, url_video, url_img, category, id } = props.video;
   const { deleteVideo, videos } = props;
-  console.log("VideoCard -> videos", videos);
 
   const handleDelete = () => {
     deleteVideo(id);

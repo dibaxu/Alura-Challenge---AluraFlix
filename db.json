@@ -4,12 +4,41 @@
       "id": "1",
       "title": "Video 1",
       "url_video": "https://www.youtube.com/embed/nzVdLC_QpnA?si=zj_jd5Y5hEJyYqO0",
-      "url_img": "https://www.youtube.com/watch?v=2",
+      "url_img": "https://images.pexels.com/photos/19349789/pexels-photo-19349789/free-photo-of-grafista-de-dintle-x-olerado-motshebe.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       "description": "Description 2",
       "category": "Backend"
     },
     {
-      "id": "5d40"
+      "id": "a604",
+      "title": "Super",
+      "description": "Duper",
+      "url_video": "https://youtu.be/nzVdLC_QpnA",
+      "url_img": "https://youtu.be/nzVdLC_QpnA",
+      "category": "Backend"
+    },
+    {
+      "id": "2",
+      "title": "Video 1",
+      "url_video": "https://www.youtube.com/embed/nzVdLC_QpnA?si=zj_jd5Y5hEJyYqO0",
+      "url_img": "https://images.pexels.com/photos/19349789/pexels-photo-19349789/free-photo-of-grafista-de-dintle-x-olerado-motshebe.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "description": "Description 2",
+      "category": "Frontend"
+    },
+    {
+      "id": "3",
+      "title": "Video 1",
+      "url_video": "https://www.youtube.com/embed/nzVdLC_QpnA?si=zj_jd5Y5hEJyYqO0",
+      "url_img": "https://images.pexels.com/photos/19349789/pexels-photo-19349789/free-photo-of-grafista-de-dintle-x-olerado-motshebe.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "description": "Description 2",
+      "category": "Inovación y Gestión"
+    },
+    {
+      "id": "4",
+      "title": "Video 1",
+      "url_video": "https://www.youtube.com/embed/nzVdLC_QpnA?si=zj_jd5Y5hEJyYqO0",
+      "url_img": "https://images.pexels.com/photos/19349789/pexels-photo-19349789/free-photo-of-grafista-de-dintle-x-olerado-motshebe.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "description": "Description 2",
+      "category": "Inovación y Gestión"
     }
   ]
 }

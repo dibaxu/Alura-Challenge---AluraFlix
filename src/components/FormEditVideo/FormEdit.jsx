@@ -38,7 +38,7 @@ export default function FormEdit({ videoData }) {
     console.log(description);
   };
   const handleCategoryChange = (event) => {
-    setCategory(event.target.value);
+    setCategory(event);
     console.log(category);
   };
   const handleTitleChange = (event) => {
@@ -93,7 +93,7 @@ export default function FormEdit({ videoData }) {
             required={true}
             placeholder='Seleccione una categoría'
             value={category}
-            onChange={handleCategoryChange}
+            onValueChange={handleCategoryChange}
           />
           <InputForm
             label='Imagen'
