@@ -17,7 +17,9 @@ async function videosCategories() {
   console.log("videosCategories -> categories", categories);
   return [...new Set(categories)];
 }
+
 async function editVideo(video) {
+  console.log("editVideo -> video", video);
   try {
     const response = await fetch(`${URL}/${video.id}`, {
       method: "PUT",
@@ -48,4 +50,21 @@ async function deleteVideo(id) {
   }
 }
 
-export { fetchVideos, videosCategories, editVideo, deleteVideo };
+async function addVideo(video) {
+  try {
+    const response = await fetch(URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(video),
+    });
+    const data = await response.json();
+    console.log("addVideo -> data", data);
+    return data;
+  } catch (error) {
+    console.log("addVideo -> error", error);
+  }
+}
+
+export { fetchVideos, videosCategories, editVideo, deleteVideo, addVideo };

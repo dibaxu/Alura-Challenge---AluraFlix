@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import VideoCard from "@/components/VideoCard/VideoCard";
-import { fetchVideos } from "@/lib/fetch";
+import { fetchVideos, deleteVideo } from "@/lib/fetch";
 
 export default function CategorySection(videoData) {
   const [videos, setVideos] = useState([]);
@@ -23,9 +23,15 @@ export default function CategorySection(videoData) {
       </Badge>
       <div className='grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
         {videos.map((video) => {
+          console.log("CategorySection -> video", video);
           return (
             video.category === videoData.category && (
-              <VideoCard key={video.id} videoData={video} />
+              <VideoCard
+                key={video.id}
+                video={video}
+                deleteVideo={deleteVideo}
+                videos={videos}
+              />
             )
           );
         })}

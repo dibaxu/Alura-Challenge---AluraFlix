@@ -1,23 +1,29 @@
 "use client";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import InputForm from "../InputForm/InputForm";
 import SelectForm from "../InputForm/SelectForm";
 import TextArea from "../InputForm/TextArea";
-import { cleanForm, submitVideo } from "@/lib/form";
+import { addVideo } from "@/lib/fetch";
 
 export default function FormAddVideo() {
-  // function submitVideo(e) {
-  //   e.preventDefault();
-  //   console.log("submitting video", e);
+  const [formData, setFormData] = useState({});
 
-  //   const form = e.target;
-  //   const formData = new FormData(form);
-  //   const data = Object.fromEntries(formData.entries());
-  //   console.log("data", data);
-  // }
-  // function cleanForm() {
-  //   console.log("cleaning form");
-  // }
+  function submitVideo(e) {
+    e.preventDefault();
+    console.log("submitting video", formData);
+    addVideo(formData);
+    // const form = e.target;
+    // const formulario = new FormData(form);
+    // const data = Object.fromEntries(formData.entries());
+    // console.log("data", data);
+  }
+
+  function cleanForm() {
+    console.log("cleaning form");
+    setFormData({});
+  }
+
   return (
     <div className='container mx-auto my-6 flex flex-col justify-center items-center gap-6'>
       <div className='text-center'>
@@ -33,28 +39,43 @@ export default function FormAddVideo() {
             type='text'
             required={true}
             placeholder='Ingrese el título del video'
+            onChange={(e) =>
+              setFormData({ ...formData, title: e.target.value })
+            }
           />
           <SelectForm
             label='Categoria'
             required={true}
             placeholder='Seleccione una categoría'
+            onChange={(e) =>
+              setFormData({ ...formData, category: e.target.value })
+            }
           />
           <InputForm
             label='Imagen'
             type='text'
             required={true}
             placeholder='Ingrese URL de la imagen'
+            onChange={(e) =>
+              setFormData({ ...formData, url_img: e.target.value })
+            }
           />
           <InputForm
             label='Video'
             type='text'
             required={true}
             placeholder='Ingrese URL del video'
+            onChange={(e) =>
+              setFormData({ ...formData, url_video: e.target.value })
+            }
           />
           <TextArea
             label='Descripción'
             required={true}
             placeholder='Descripción del video'
+            onChange={(e) =>
+              setFormData({ ...formData, description: e.target.value })
+            }
           />
         </div>
 

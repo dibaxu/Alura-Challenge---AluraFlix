@@ -10,19 +10,15 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import FormEdit from "../FormEditVideo/FormEdit";
-import { deleteVideo } from "@/lib/fetch";
+import { set } from "react-hook-form";
 
-export default function VideoCard({ videoData }) {
-  // const [isEditing, setIsEditing] = useState(false);
-
-  // function handleEdit() {
-  //   setIsEditing(!isEditing);
-  //   console.log(isEditing);
-  // }
-  const { title, description, url_video, url_img, category, id } = videoData;
+export default function VideoCard(props) {
+  const video = props.video;
+  const { title, description, url_video, url_img, category, id } = props.video;
+  const { deleteVideo, videos } = props;
+  console.log("VideoCard -> videos", videos);
 
   const handleDelete = () => {
-    console.log("borrando video");
     deleteVideo(id);
   };
 
@@ -42,10 +38,9 @@ export default function VideoCard({ videoData }) {
       </CardContent>
       <CardFooter className='flex justify-between'>
         <Button variant='destructive' onClick={handleDelete}>
-          {" "}
-          Borrar{" "}
+          Borrar
         </Button>
-        <FormEdit videoData={videoData} />
+        <FormEdit videoData={video} />
       </CardFooter>
     </Card>
   );

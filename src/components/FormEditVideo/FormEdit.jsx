@@ -57,7 +57,7 @@ export default function FormEdit({ videoData }) {
     saveChanges(videoData);
   };
 
-  function cleanForm(videoData) {
+  function cleanForm() {
     console.log("cleaning form");
     setUrlImg("");
     setUrlVideo("");
